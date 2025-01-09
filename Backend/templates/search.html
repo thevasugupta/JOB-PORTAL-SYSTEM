@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Search Results</h2>
+<p>{{ message }}</p>
+<ul>
+    {% for job in jobs %}
+        <li>{{ job.title }} - {{ job.location }} - {{ job.skills }} - ${{ job.salary }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

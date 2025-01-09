@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Post a Job</h2>
+<form method="POST" action="/jobs">
+    <label for="title">Job Title:</label>
+    <input type="text" id="title" name="title" required><br>
+
+    <label for="location">Location:</label>
+    <input type="text" id="location" name="location" required><br>
+
+    <label for="skills">Required Skills:</label>
+    <input type="text" id="skills" name="skills" required><br>
+
+    <label for="salary">Salary:</label>
+    <input type="number" id="salary" name="salary" required><br>
+
+    <button type="submit">Post Job</button>
+</form>
+
+<h2>Available Jobs</h2>
+<ul>
+    {% for job in jobs %}
+        <li>
+            {{ job.title }} - {{ job.location }} - {{ job.skills }} - ${{ job.salary }}
+            <form method="POST" action="/apply/{{ job.id }}">
+                <label for="user_id">User ID:</label>
+                <input type="number" id="user_id" name="user_id" required>
+                <button type="submit">Apply</button>
+            </form>
+        </li>
+    {% endfor %}
+{% endblock %}

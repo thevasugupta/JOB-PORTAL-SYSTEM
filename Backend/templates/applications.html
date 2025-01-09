@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Job Applications</h2>
+<table>
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Job</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for application in applications %}
+            <tr>
+                <td>{{ application.user.name }}</td>
+                <td>{{ application.job.title }}</td>
+                <td>{{ application.status }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
